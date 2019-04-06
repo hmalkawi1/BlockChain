@@ -66,9 +66,9 @@ class NotaryClient(object):
     # 2. Send to REST API
 
     #defining what a sale is 
-    def sale(self, buyer, seller, houseinfo):
-        '''record a sale'''
-        return self._wrap_and_send(buyer, seller, houseinfo, wait=10)
+    def sale(self, buyer, seller, houseid):
+        '''transaction/sale'''
+        return self._wrap_and_send(buyer, seller, houseid, wait=10)
 
     def _send_to_rest_api(self, suffix, data=None, content_type=None):
         '''

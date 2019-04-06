@@ -17,7 +17,6 @@ from notary_client import NotaryClient
 
 KEY_NAME = 'mynotary'
 
-
 # For Docker:
 DEFAULT_URL = 'http://rest-api:8008'
 
@@ -54,11 +53,11 @@ def _get_private_keyfile(key_name):
     key_dir = os.path.join(home, ".sawtooth", "keys")
     return '{}/{}.priv'.format(key_dir, key_name)
 
-def do_sale(buyer, seller, houseinfo):
+def do_sale(buyer, seller, houseid):
     '''Calls client class to record sale.'''
     privkeyfile = _get_private_keyfile(KEY_NAME)
     client = NotaryClient(base_url=DEFAULT_URL, key_file=privkeyfile)
-    response = client.sale(buyer, seller, houseinfo)
+    response = client.sale(buyer, seller, houseid)
     print("Sale transaction response: {}".format(response))
 
 def main(prog_name=os.path.basename(sys.argv[0]), args=None):
