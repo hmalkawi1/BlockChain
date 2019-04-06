@@ -65,7 +65,7 @@ class NotaryClient(object):
     # 2. Create a transaction and a batch
     # 2. Send to REST API
 
-    # Look at this definition for the thing eh
+    #defining what a sale is 
     def sale(self, buyer, seller, houseinfo):
         '''record a sale'''
         return self._wrap_and_send(buyer, seller, houseinfo, wait=10)
@@ -135,7 +135,7 @@ class NotaryClient(object):
         # We just have one input and output address (the same one).
         input_and_output_address_list = [self._address]
 
-        # Create a TransactionHeader.
+        # Header for Transaction
         header = TransactionHeader(
             signer_public_key=self._public_key,
             family_name=FAMILY_NAME,

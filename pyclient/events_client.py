@@ -2,29 +2,21 @@
 
 
 # ------------------------------------------------------------------------------
-'''Sample Sawtooth event client
 
-   To run, start the validator then type the following on the command line:
-       ./events_client.py
 
-   For more information, see
-   https://sawtooth.hyperledger.org/docs/core/releases/latest/app_developers_guide/event_subscriptions.html
-'''
-
+import zmq
 import sys
 import traceback
-import zmq
 from sawtooth_sdk.messaging.stream import Stream
 from sawtooth_sdk.protobuf import events_pb2
 from sawtooth_sdk.protobuf import client_event_pb2
 from sawtooth_sdk.protobuf.validator_pb2 import Message
 
-# hard-coded for simplicity (otherwise get the URL from the args in main):
-# For localhost access:
-#DEFAULT_VALIDATOR_URL = 'tcp://localhost:4004'
+
 # For Docker access:
 DEFAULT_VALIDATOR_URL = 'tcp://validator:4004'
-# Calculated from the 1st 6 characters of SHA-512("cookiejar"):
+
+#using coder:
 NOTARY_TP_ADDRESS_PREFIX = '58504b'
 
 
@@ -55,7 +47,7 @@ def listen_to_events(delta_filters=None):
            client_event_pb2.ClientEventsSubscribeResponse.OK
 
     # Listen for events in an infinite loop
-    print("Listening to events.")
+    print("Listening for events.")
     while True:
         msg = stream.receive().result()
         assert msg.message_type == Message.CLIENT_EVENTS
@@ -63,7 +55,7 @@ def listen_to_events(delta_filters=None):
         # Parse the response
         event_list = events_pb2.EventList()
         event_list.ParseFromString(msg.content)
-        print("Received the following events: ----------")
+        print("Events recieved: ----------")
         for event in event_list.events:
             print(event)
 
