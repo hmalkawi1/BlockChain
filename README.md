@@ -1,13 +1,16 @@
 # Notary Blockchain
 
-Block Chain uses Docker and Sawtooth
+## Software
+  - Blockchain
+  - Sawtooth
 
-Use `docker-compose up --build` in root directory, shsould get the chain started up and running.
+## How to Run
 
-In a seperate terminal use: `docker exec -it notary-client bash` connects the client to chain
+Use `docker-compose up --build` in root directory to get the chain started up and running.
 
-To run the "notary-client" you can use this command and then insert the required inputs:
-`./notary`
+In a seperate terminal use `docker exec -it notary-client bash` to connect the client to chain.
+
+To run the **notary-client**, use the `./notary` command then insert the required inputs:
 
 `Buyer's name:`
 `Seller name:`
